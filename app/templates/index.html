@@ -52,11 +52,11 @@ crossorigin="anonymous" />
             <a class="nav-link" href="">Jobs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Submit</a>
+            <a class="nav-link" href="{% url 'update'%}">Submit</a>
           </li>
         
       </ul>
-      <ul class="nav navbar-nav ms-auto">
+      <ul class="nav navbar-nav ml-auto">
         <li><a href="">Login</a></li>
       </ul>
 
@@ -122,6 +122,11 @@ crossorigin="anonymous" />
             <a href="{% url 'comment' post.id%}">Add a Comment</a>
             
           </button>
+          <button class="btn btn-danger btn-sm">
+            <a href="{% url 'delete' post.id%}">Delete Post</a>
+            
+          </button>
+
 
 
 

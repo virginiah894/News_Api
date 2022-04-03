@@ -5,12 +5,25 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, serializers
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 from .models import Comments, Post, UpVote
 from .serializers import PostSerializer, CommentSerializer,UpVoteSerializer
 # Create your views here.
+
+from rest_framework.permissions import SAFE_METHODS, BasePermission
+
+class IsAdminOrReadOnly(BasePermission):
+    def has_permission(self, request, view):
+        if request.method in SAFE_METHODS:
+            return True
+        else:
+            return request.user.is_staff
+
+
 class PostViewSet(ModelViewSet):
+    permission_classes = (IsAdminOrReadOnly,)
+
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     def get_post(self, pk):
@@ -72,7 +85,7 @@ def is_liked(request):
 
 def comment(request, pk):
     if request.method == 'POST':
-        post = get_object_or_404(Post, id=pk)
+        post = Post.objects.get(id=pk)
         form = CommentForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
@@ -81,7 +94,7 @@ def comment(request, pk):
         form = CommentForm()
 
     title = 'Comment'
-    return render(request, 'comment.html', {'title':title})
+    return render(request, 'comment.html', locals())
 def new_posts(request):
     posts = Post.objects.all().filter(creation_date=datetime.date.today())
     comments = Comments.objects.all().filter(creation_date=datetime.date.today())
@@ -94,3 +107,22 @@ def past_posts(request):
     return render(request, 'past.html',locals())
 
 
+def post_update(request):
+    if request.method =='POST':
+        form = PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            form .save()
+            return redirect('home')
+        
+         
+    else:
+        form = PostForm()
+    return render(request,'post_form.html',locals())
+
+def post_delete(request,pk):
+    post = Post.objects.get(id=pk)
+    if request.method=='POST':
+        post.delete()
+        return redirect('home')
+    
+    return render(request,'delete.html',locals())

@@ -8,7 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     link = models.URLField(max_length=120)
     creation_date = models.DateField()
-    upvote = models.IntegerField()
+    upvote = models.IntegerField(null=True)
     author_name = models.CharField(max_length=50)
 
     @property
@@ -48,3 +48,4 @@ class UpVote(models.Model):
 
     def unvote(self):
         self.delete()
+

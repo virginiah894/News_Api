@@ -16,6 +16,10 @@ urlpatterns = [
     path('comment/<int:pk>/', views.comment, name = 'comment'),
     path('new_posts/',views.new_posts,name ='new'),
     path('past_posts/',views.past_posts,name ='past'),
+    path('update/',views.post_update,name='update'),
+    path('delete/<int:pk>/',views.post_delete,name='delete'),
+
+
 
     
 
