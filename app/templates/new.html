@@ -1,0 +1,138 @@
+{%load  django_bootstrap5%} 
+{% load crispy_forms_tags %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- fontawesome -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+crossorigin="anonymous" />
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Hacker News</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        <li class="nav-item">
+          <a class="nav-link" href="">New</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Past</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Comments</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="">Ask</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="">Show</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Submit</a>
+          </li>
+        
+      </ul>
+      <ul class="nav navbar-nav ms-auto">
+        <li><a href="">Login</a></li>
+      </ul>
+
+    
+</nav>
+
+<div class="container" style="margin-top: 10px; background-color: bisque;">
+  
+  <div class="row">
+     
+      
+    {% for post in posts %}
+    {% for comment in comments %}
+
+
+    <div class="col-md-8" style="background-color: bisque;"> 
+    
+      <div class="card" style="margin-bottom: 5px;background-color: bisque;">
+  
+
+        <div class="card-body">
+          <h5
+            class="card-title"><a
+          href="{{post.link}}"
+          target="_blank"
+          style="font-family: 'Nosifer', cursive; color: brown"
+          >{{post.title}}</a>
+            
+          </h5>        
+        </div>
+
+        <div class="card-body">
+            <button class="btn btn-info btn-sm">{{post.creation_date| timesince}} ago</button>
+            <button class="btn btn-info btn-sm">Upvote:{{post.upvote}}</button>
+            <button class="btn btn-info btn-sm">Comments</button>
+
+          <hr />
+
+            <a href=""> Author:{{post.author_name}}</a>
+            
+          </button>
+
+          <p class="text-muted" style="cursor:pointer">
+            Comments({{post.count_comments}})<i class="fas fa-ellipsis-h" style="padding:5px"></i>
+        </p>
+        <div class="" style="display: flex;flex-direction: row;">
+        
+
+            <div class=""> <span><strong> {{comment.content}} </strong></span>
+                <p>{{comment.author_name}}</p>
+                <p>{{comment.creation_date| timesince}} ago</p>
+                <hr>
+            </div>
+
+        </div>
+
+
+        <button class="btn btn-info btn-sm">
+            <a href="{% url 'comment' post.id%}">Add a Comment</a>
+            
+          </button>
+
+
+
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+
+   
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
