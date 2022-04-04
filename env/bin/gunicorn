@@ -1,4 +1,4 @@
-#!/Users/fintechkenya/Documents/newsAPi/News_Api/env/bin/python3
+#!/home/perry/Documents/perry_projects/News_Api/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
