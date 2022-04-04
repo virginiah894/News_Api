@@ -69,7 +69,7 @@ crossorigin="anonymous" />
      
       
     {% for post in posts %}
-    {% for comment in comments %}
+    {% for comment in post.comments.all %}
 
 
     <div class="col-md-8" style="background-color: bisque;"> 
@@ -89,9 +89,14 @@ crossorigin="anonymous" />
         </div>
 
         <div class="card-body">
-            <button class="btn btn-info btn-sm">{{post.creation_date| timesince}} ago</button>
-            <button class="btn btn-info btn-sm">Upvote:{{post.upvote}}</button>
+            <button class="btn btn-info btn-sm">Posted on:{{post.creation_date| timesince}} ago</button>
+            <button class="btn btn-info btn-sm">Upvotes:{{post.upvote}}</button>
             <button class="btn btn-info btn-sm">Comments</button>
+            <td>
+              <a href="{% url 'upvote' id=post.id  %}">
+                <button type="button" class="likes" style="text-align:center;border-radius:40px;width: 100px;height: 40px">upvote</button>
+              </a>
+            </td>
 
           <hr />
 
@@ -99,18 +104,14 @@ crossorigin="anonymous" />
             
           </button>
 
-          <p class="text-muted" style="cursor:pointer">
-            <i class="far fa-comment clickme"></i>
-            <i class="fas fa-arrow-up"></i>
-
-            Comments({{post.count_comments}})<i class="fas fa-ellipsis-h" style="padding:5px"></i>
+          <p class="text-muted" style="cursor:pointer">Comments({{post.count_comments}})
         </p>
 
         <div class="" style="display: flex;flex-direction: row;">
         
 
             <div class=""> <span><strong> {{comment.content}} </strong></span>
-                <p>{{comment.author_name}}</p>
+                <p>commented by:{{comment.author_name}}</p>
                 <p>{{comment.creation_date| timesince}} ago</p>
                 <hr>
             </div>
@@ -135,6 +136,7 @@ crossorigin="anonymous" />
     </div>
     {% endfor %}
     {% endfor %}
+  
 
    
   </div>

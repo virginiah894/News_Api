@@ -126,3 +126,9 @@ def post_delete(request,pk):
         return redirect('home')
     
     return render(request,'delete.html',locals())
+
+def upvote(request,id):
+    post = Post.objects.get(id=id)
+    post.upvote = post.upvote+1
+    post.save()
+    return redirect('/')

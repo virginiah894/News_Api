@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_bootstrap5',
     'crispy_forms',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'django_cron',
 
 
 ]
