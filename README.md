@@ -1,7 +1,7 @@
 ## Author
 
 
-* [**Virginiah Periah**](https://github.com/bvirginiah894)
+* [**Virginiah Periah**](https://github.com/virginiah894)
 
 ## Features
 
@@ -36,17 +36,18 @@ As a user of the web application you will be able to:
 * Make migrations
 
         $ python manage.py makemigrations app
-        $ python3.6 manage.py migrate 
+        $ python3 manage.py migrate 
 
 * To run the application, in your terminal:
 * cd into crudapi,then run
 
-        $ python3.6 manage.py runserver
+        $ python3 manage.py runserver
 
 
 ## API endpoints
-*  
-
+*  http://127.0.0.1:8000/api/
+*  [Posts](http://127.0.0.1:8000/api/app/)
+*  [Comments](http://127.0.0.1:8000/api/comments)
         
 ## Technologies Used
 * Python3.10
