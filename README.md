@@ -4,7 +4,8 @@
 * [**Virginiah Periah**](https://github.com/virginiah894)
 
 ## Features
-
+## Deployment
+[Heroku](https://veerest.herokuapp.com/)
 
 As a user of the web application you will be able to:
 
