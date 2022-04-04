@@ -13,6 +13,7 @@ As a user of the web application you will be able to:
 2. Comment on other posts
 3. Upvote Posts
 4. Create their own posts
+5. Delete posts
 
 
 
@@ -61,5 +62,6 @@ As a user of the web application you will be able to:
 
 ## Future Implementation
 - Authentication System
+- Limit delete of posts to only the posteer /admin
 
 
