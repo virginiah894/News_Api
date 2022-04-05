@@ -85,6 +85,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'crudapi.wsgi.application'
 
+CRONJOBS = [
+    ('0 0 * * *', 'app.cron.my_cron_job')
+]
+
 
 
 
@@ -123,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 

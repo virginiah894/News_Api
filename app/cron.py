@@ -1,4 +1,5 @@
 from .models import *
 def my_cron_job():
-    unvote = UpVote.unvote()
+    UpVote.objects.all().update(rego_update=UpVote().rego_update)
+
     
