@@ -132,3 +132,7 @@ def upvote(request,id):
     post.upvote = post.upvote+1
     post.save()
     return redirect('/')
+
+def comments(request):
+    comments = Comments.objects.all()
+    return render(request, 'comments.html',locals())

@@ -23,10 +23,15 @@ As a user of the web application you will be able to:
 * virtual environment
 * pip
 
-### Cloning
+### Cloning and Running Locally
 * In your terminal:
         
         $ git clone https://github.com/virginiah894/News_Api
+        $ cd News_Api
+        $ Docker build -t
+        $ Python3 manage.py runserver 
+
+## OR
      
 
 ## Running the Application
